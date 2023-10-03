@@ -3,7 +3,6 @@ using eGym2023.Model.Models;
 using eGym2023.Model.SearchObjects;
 using eGym2023.Services.Base;
 using eGym2023.Services.DataDB;
-using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -18,11 +17,30 @@ namespace eGym2023.Services.User
 
         public override IQueryable<DataDB.User> AddFilter(IQueryable<DataDB.User> query, UserSearchObject? search = null)
         {
+            if (!string.IsNullOrEmpty(search?.Username))
+            {
+                query = query.Where(x => x.Username.StartsWith(search.Username));
+            }
+            if (!string.IsNullOrEmpty(search?.Name))
+            {
+                query = query.Where(x => x.Username.StartsWith(search.Name));
+            }
+            if (!string.IsNullOrEmpty(search?.Email))
+            {
+                query = query.Where(x => x.Username.StartsWith(search.Email));
+            }
             if (!string.IsNullOrEmpty(search?.Address))
             {
                 query = query.Where(x => x.Address.StartsWith(search.Address));
             }
-            var list = query.ToListAsync();
+            if (!string.IsNullOrEmpty(search?.Phone))
+            {
+                query = query.Where(x => x.Address.StartsWith(search.Phone));
+            }
+            if (search.RoleId != null)
+            {
+                query = query.Where(x => x.RoleId == search.RoleId);
+            }
             return base.AddFilter(query, search);
         }
 

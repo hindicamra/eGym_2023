@@ -16,19 +16,30 @@ namespace eGym2023.Services.Base
             _mapper = mapper;
         }
 
-        public virtual async Task<List<T>> Get(TSearch? search = null)
+        public virtual async Task<PagedResult<T>> Get(TSearch? search = null)
         {
-            var entity = _context.Set<TDb>().AsQueryable();
-            entity = AddFilter(entity, search);
+            var query = _context.Set<TDb>().AsQueryable();
+
+            PagedResult<T> result = new PagedResult<T>();
+
+            query = AddFilter(query, search);
+
+            query = AddInclude(query, search);
+
+            result.Count = await query.CountAsync();
+
+            //Add order by asc or desc
             if (search?.Page.HasValue == true && search?.PageSize.HasValue == true)
             {
-                entity = entity.Take(search.PageSize.Value).Skip(search.Page.Value);
+                query = query.Take(search.PageSize.Value).Skip(search.Page.Value * search.PageSize.Value);
             }
-            var list = entity.ToList();
 
-            return Mapper.Map<IEnumerable<List<T>>>(list);
+            var list = await query.ToListAsync();
+
+            var tmp = _mapper.Map<List<T>>(list);
+            result.Result = tmp;
+            return result;
         }
-
 
         public virtual IQueryable<TDb> AddInclude(IQueryable<TDb> query, TSearch? search = null)
         {

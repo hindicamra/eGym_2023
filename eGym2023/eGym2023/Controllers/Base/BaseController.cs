@@ -17,7 +17,7 @@ namespace eGym2023.Controllers.Base
         }
 
         [HttpGet()]
-        public async Task<List<T>> Get([FromQuery] TSearch? search = null)
+        public async Task<PagedResult<T>> Get([FromQuery] TSearch? search = null)
         {
             return await _service.Get(search);
         }
