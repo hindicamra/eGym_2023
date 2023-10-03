@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.11">
       <PrivateAssets>all</PrivateAssets>
@@ -16,6 +17,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\eGym.Model\eGym2023.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DataDB\" />
   </ItemGroup>
 
 </Project>

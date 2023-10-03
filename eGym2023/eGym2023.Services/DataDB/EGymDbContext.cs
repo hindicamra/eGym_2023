@@ -43,13 +43,11 @@ public partial class EGymDbContext : DbContext
     {
         modelBuilder.Entity<Attendance>(entity =>
         {
-            entity.HasKey(e => e.AttendanceId).HasName("PK__Attendan__8B69263C046AE951");
+            entity.HasKey(e => e.AttendanceId).HasName("PK__Attendan__8B69263CC44031EF");
 
             entity.ToTable("Attendance");
 
-            entity.Property(e => e.AttendanceId)
-                .ValueGeneratedNever()
-                .HasColumnName("AttendanceID");
+            entity.Property(e => e.AttendanceId).HasColumnName("AttendanceID");
             entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
             entity.Property(e => e.SessionId).HasColumnName("SessionID");
             entity.Property(e => e.Status).HasMaxLength(20);
@@ -65,11 +63,9 @@ public partial class EGymDbContext : DbContext
 
         modelBuilder.Entity<Invoice>(entity =>
         {
-            entity.HasKey(e => e.InvoiceId).HasName("PK__Invoices__D796AAD58F4F6DA7");
+            entity.HasKey(e => e.InvoiceId).HasName("PK__Invoices__D796AAD564715852");
 
-            entity.Property(e => e.InvoiceId)
-                .ValueGeneratedNever()
-                .HasColumnName("InvoiceID");
+            entity.Property(e => e.InvoiceId).HasColumnName("InvoiceID");
             entity.Property(e => e.Amount).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
             entity.Property(e => e.DueDate).HasColumnType("date");
@@ -82,11 +78,9 @@ public partial class EGymDbContext : DbContext
 
         modelBuilder.Entity<MealPlan>(entity =>
         {
-            entity.HasKey(e => e.MealPlanId).HasName("PK__MealPlan__0620DB5601F300C6");
+            entity.HasKey(e => e.MealPlanId).HasName("PK__MealPlan__0620DB567582A954");
 
-            entity.Property(e => e.MealPlanId)
-                .ValueGeneratedNever()
-                .HasColumnName("MealPlanID");
+            entity.Property(e => e.MealPlanId).HasColumnName("MealPlanID");
             entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
             entity.Property(e => e.Date).HasColumnType("date");
             entity.Property(e => e.MealPlanDescription).HasMaxLength(255);
@@ -98,11 +92,9 @@ public partial class EGymDbContext : DbContext
 
         modelBuilder.Entity<Payment>(entity =>
         {
-            entity.HasKey(e => e.PaymentId).HasName("PK__Payments__9B556A58D9E4144C");
+            entity.HasKey(e => e.PaymentId).HasName("PK__Payments__9B556A58FBF86662");
 
-            entity.Property(e => e.PaymentId)
-                .ValueGeneratedNever()
-                .HasColumnName("PaymentID");
+            entity.Property(e => e.PaymentId).HasColumnName("PaymentID");
             entity.Property(e => e.Amount).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
             entity.Property(e => e.PaymentDate).HasColumnType("datetime");
@@ -123,11 +115,9 @@ public partial class EGymDbContext : DbContext
 
         modelBuilder.Entity<Review>(entity =>
         {
-            entity.HasKey(e => e.ReviewId).HasName("PK__Reviews__74BC79AE7EDB5818");
+            entity.HasKey(e => e.ReviewId).HasName("PK__Reviews__74BC79AE640622FE");
 
-            entity.Property(e => e.ReviewId)
-                .ValueGeneratedNever()
-                .HasColumnName("ReviewID");
+            entity.Property(e => e.ReviewId).HasColumnName("ReviewID");
             entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
             entity.Property(e => e.Date).HasColumnType("date");
             entity.Property(e => e.ServiceId).HasColumnName("ServiceID");
@@ -143,13 +133,11 @@ public partial class EGymDbContext : DbContext
 
         modelBuilder.Entity<Schedule>(entity =>
         {
-            entity.HasKey(e => e.ScheduleId).HasName("PK__Schedule__9C8A5B69C39E32F0");
+            entity.HasKey(e => e.ScheduleId).HasName("PK__Schedule__9C8A5B697367A1C4");
 
             entity.ToTable("Schedule");
 
-            entity.Property(e => e.ScheduleId)
-                .ValueGeneratedNever()
-                .HasColumnName("ScheduleID");
+            entity.Property(e => e.ScheduleId).HasColumnName("ScheduleID");
             entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
             entity.Property(e => e.Date).HasColumnType("date");
             entity.Property(e => e.ServiceId).HasColumnName("ServiceID");
@@ -171,11 +159,9 @@ public partial class EGymDbContext : DbContext
 
         modelBuilder.Entity<Service>(entity =>
         {
-            entity.HasKey(e => e.ServiceId).HasName("PK__Services__C51BB0EA13A629B7");
+            entity.HasKey(e => e.ServiceId).HasName("PK__Services__C51BB0EA6DBA35B5");
 
-            entity.Property(e => e.ServiceId)
-                .ValueGeneratedNever()
-                .HasColumnName("ServiceID");
+            entity.Property(e => e.ServiceId).HasColumnName("ServiceID");
             entity.Property(e => e.Description).HasMaxLength(255);
             entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.ServiceName).HasMaxLength(100);
@@ -183,11 +169,9 @@ public partial class EGymDbContext : DbContext
 
         modelBuilder.Entity<Session>(entity =>
         {
-            entity.HasKey(e => e.SessionId).HasName("PK__Sessions__C9F49270E201958D");
+            entity.HasKey(e => e.SessionId).HasName("PK__Sessions__C9F49270BF24F898");
 
-            entity.Property(e => e.SessionId)
-                .ValueGeneratedNever()
-                .HasColumnName("SessionID");
+            entity.Property(e => e.SessionId).HasColumnName("SessionID");
             entity.Property(e => e.Date).HasColumnType("date");
             entity.Property(e => e.ServiceId).HasColumnName("ServiceID");
             entity.Property(e => e.TrainerId).HasColumnName("TrainerID");
@@ -203,15 +187,14 @@ public partial class EGymDbContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC43F0BC3F");
+            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC14AB9167");
 
-            entity.Property(e => e.UserId)
-                .ValueGeneratedNever()
-                .HasColumnName("UserID");
+            entity.Property(e => e.UserId).HasColumnName("UserID");
             entity.Property(e => e.Address).HasMaxLength(255);
             entity.Property(e => e.Email).HasMaxLength(100);
             entity.Property(e => e.Name).HasMaxLength(100);
-            entity.Property(e => e.Password).HasMaxLength(255);
+            entity.Property(e => e.PasswordHash).HasMaxLength(255);
+            entity.Property(e => e.PasswordSalt).HasMaxLength(255);
             entity.Property(e => e.Phone).HasMaxLength(20);
             entity.Property(e => e.RoleId).HasColumnName("RoleID");
             entity.Property(e => e.Username).HasMaxLength(50);
@@ -223,7 +206,7 @@ public partial class EGymDbContext : DbContext
 
         modelBuilder.Entity<UserRole>(entity =>
         {
-            entity.HasKey(e => e.RoleId).HasName("PK__UserRole__8AFACE3A593FEBD0");
+            entity.HasKey(e => e.RoleId).HasName("PK__UserRole__8AFACE3A5F1D2B2C");
 
             entity.Property(e => e.RoleId)
                 .ValueGeneratedNever()

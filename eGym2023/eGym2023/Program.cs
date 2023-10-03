@@ -1,5 +1,5 @@
-using eGym2023.Services;
 using eGym2023.Services.DataDB;
+using eGym2023.Services.User;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +21,9 @@ builder.Services.AddTransient<IUserService, UserService>();
 
 builder.Services.AddDbContext<EGymDbContext>(options =>
       options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddAutoMapper(typeof(IUserService));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

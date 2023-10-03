@@ -1,21 +1,16 @@
-﻿using eGym2023.Services;
+﻿using eGym2023.Controllers.Base;
+using eGym2023.Model.Models;
+using eGym2023.Model.SearchObjects;
+using eGym2023.Services.User;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eGym2023.Controllers
 {
-    public class UserController : Controller
+    [ApiController]
+    public class UserController : BaseController<UserModel, UserSearchObject>
     {
-        private readonly IUserService _userService;
-
-        public UserController(IUserService userService) => _userService = userService;
-
-
-        [HttpGet]
-        [Route("users")]
-        public async Task<IActionResult> Index(int userId)
+        public UserController(ILogger<BaseController<UserModel,UserSearchObject>> logger, IUserService service) : base(logger, service)
         {
-            var user = await _userService.GetUserAsync(userId);
-            return View(user);
         }
     }
 }
