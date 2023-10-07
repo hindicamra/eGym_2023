@@ -1,4 +1,5 @@
 using eGym2023.Services.DataDB;
+using eGym2023.Services.Role;
 using eGym2023.Services.User;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IRoleService, RoleService>();
 
 
 builder.Services.AddDbContext<EGymDbContext>(options =>

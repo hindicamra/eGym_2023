@@ -5,9 +5,13 @@ namespace eGym2023.Services.DataDB;
 
 public partial class UserRole
 {
-    public int RoleId { get; set; }
+    public int UserRoleId { get; set; }
 
-    public string RoleName { get; set; } = null!;
+    public int? UserRolesUserId { get; set; }
 
-    public virtual ICollection<User> Users { get; set; } = new List<User>();
+    public int? UserRolesUserIdroleId { get; set; }
+
+    public virtual User? UserRolesUser { get; set; }
+
+    public virtual Role? UserRolesUserIdrole { get; set; }
 }

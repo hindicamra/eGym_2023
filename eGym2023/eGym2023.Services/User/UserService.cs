@@ -3,6 +3,7 @@ using eGym2023.Model.Models;
 using eGym2023.Model.SearchObjects;
 using eGym2023.Services.Base;
 using eGym2023.Services.DataDB;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -39,9 +40,18 @@ namespace eGym2023.Services.User
             }
             if (search.RoleId != null)
             {
-                query = query.Where(x => x.RoleId == search.RoleId);
+                //query = query.Where(x => x.RoleId == search.RoleId);
             }
             return base.AddFilter(query, search);
+        }
+
+        public override IQueryable<DataDB.User> AddInclude(IQueryable<DataDB.User> query, UserSearchObject? search = null)
+        {
+            if (search?.IsRoleIncluded == true)
+            {
+                query = query.Include("UserRoles.UserRolesUserIdrole");
+            }
+            return base.AddInclude(query, search);
         }
 
         public static string GenerateSalt()

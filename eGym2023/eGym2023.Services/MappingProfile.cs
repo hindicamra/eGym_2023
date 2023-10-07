@@ -12,6 +12,11 @@ namespace eGym2023.Services
             CreateMap<DataDB.User, UserModel>();
             CreateMap<UserInsertModel, DataDB.User>();
             CreateMap<UserUpdateModel, DataDB.User>();
+
+            //UserRole mapping
+            CreateMap<DataDB.UserRole, UserRole>();
+            //Role mapping
+            CreateMap<DataDB.Role, RoleModel>();    
         }
     }
 }

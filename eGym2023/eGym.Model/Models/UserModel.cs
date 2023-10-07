@@ -14,6 +14,6 @@
 
         public string? Address { get; set; }
 
-        public int? RoleId { get; set; }
+        public virtual ICollection<UserRole> Role { get; } = new List<UserRole>();   
     }
 }
